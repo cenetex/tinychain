@@ -5,9 +5,10 @@ const forge = require('node-forge');
 let chain = null;
 
 module.exports = {
-    create: () => {
-        chain = new Blockchain("Test Network");
-        return chain;
+    create: (callback) => {
+        chain = new Blockchain();
+        //callback(chain);
+        chain.load(callback);
     },
     wallet: {
         create: () => {

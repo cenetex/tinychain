@@ -4,10 +4,10 @@ $(()=>{
             console.log(data);
             var chain_div = $('#chain_name');
             chain_div.html(
-                `Chain Name: ${data.chain[0].data} (${data.chain.length})`
+                `Chain Name: ${data.blocks[0].data} (${data.blocks.length})`
             );
             let blocks_html = "";
-            data.chain.forEach(T => {
+            data.blocks.forEach(T => {
                 let short_hash = T => T.substr(0,8);
                 blocks_html += `<tr>
                     <td>${short_hash(T.hash)}</td>
@@ -49,11 +49,20 @@ $(()=>{
         load_data("test");
     });
 
-    $("#mine").on('click', () => {
+    $("#mine_button").on('click', () => {
         $.ajax({
             url: 'chain/mine',
             type: 'PUT',
             data: { address: $("#wallet_key").val() },
+            success: function(response) {
+                console.log(response);
+            }
+         });
+    });
+    $("#save_button").on('click', () => {
+        $.ajax({
+            url: 'chain/save',
+            type: 'PUT',
             success: function(response) {
                 console.log(response);
             }
