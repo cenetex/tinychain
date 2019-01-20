@@ -14,16 +14,33 @@ Your very own blockchain complete with the following components:
 
 http://localhost:3030/index.html shows blockchain and wallet controls.
 
-## Architecture
+## Files
 
 Core Files
 -- index.js - central module
 -- lib/blockchain.js - The blockchain functionality; add transactions to a block and try to mine it.
+-- lib/fs-loader.js - Load the blockchain from the file system
+-- lib/reddit-loader - Load the blockchain from reddit
 -- lib/wallet.js - Wallet functionality; create wallets and sign transactions
 
 Developer Mode
 -- server.js - imports index.js and sets up a rest API for development.
 -- static/* - the UI for server.js
+
+## Architecture
+
+### Blockchain Node
+
+- Load chain
+- Listen for transactions
+- Validate transactions
+- Mine Blocks
+- Save chain
+
+### Wallet
+
+- Wallet Generation
+- Signing Transactions
 
 ## Contribution Guidelines
 
