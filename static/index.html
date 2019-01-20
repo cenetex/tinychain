@@ -2,91 +2,89 @@
 <html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css"/>
+    <style>
+        .hide {
+            display: none;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="pure-g">
-
-        <div class="pure-u-1 pure-u-md-1-3">
+    <div class="row">
+        <div class="container">
             <h1>Basic Blockchain</h1>
             <p>Create your own blockchain! Share it with your friends!</p>
-            <h2>Known Blockchains</h2>
-            <ul>
-                <li>
-                    <a href="#test" id="test_chain">Test Network (resets on reboot)</a>
-                </li>
-            </ul>
-            <div id="current_chain">
+            <p>This interface manages the chain and provides a simple wallet</p>
+        </div>
+    </div>
+
+    <!-- UI CONTROLS-->
+    <div class="row">
+        <!-- MINING CONTROLS-->
+        <div id="current_chain" class="col-sm-4">
+            <div class="container">
                 <h2>Current Chain</h2>
-                <h3>Name: <span id="chain_name"></span></h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Hash</th>
-                            <th>Date</th>
-                            <th>Data</th>
-                            <th>Previous</th>
-                            <th>Nonce</th>
-                        </tr>
-                    </thead>
-                    <tbody id="chain_blocks">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <div class="pure-u-1 pure-u-md-1-3">
-            <div id="wallet">
-                <h2>Wallet</h2>
-                <ul>
-                    <li>
-                        <a href="#wallet" id="create_wallet">Create</a>
-                        <table>
-                            <tr>
-                                <td>Address</td>
-                                <td>Secret</td>
-                            </tr>
-                            <tr>
-                                <td><input id="wallet_id"></input></td>
-                                <td><input id="wallet_key"></input></td>
-                            </tr>
-                        </table>
-                    </li>
-                    <li>
-                        <a href="#send" id="sign_transaction">Sign Transaction</a>
-                        <table>
-                            <tr>
-                                <td>destination</td>
-                                <td><input type="text" id="destination"></input></td>
-                            </tr>
-                            <tr>
-                                <td>amount</td>
-                                <td><input type="text" id="amount"></input></td>
-                            </tr>
-                        </table>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <div class="pure-u-1 pure-u-md-1-3">
-            <div id="transaction">
-                <h2>Transaction</h2>
-                <textarea cols="80" rows="10" type="text" id="transaction_data"></textarea>
-                <br />
-                <input type="button" id="send" value="Send"></input>
-            </div>
-
-            <div id="mine">
-                <h2>Mine</h2>
                 <input type="button" id="mine_button" value="Mine"></input>
+                <div id="mining" class="hide spinner"></div>
+                <span id="mine_ok" class="hide toast">Block Mined!</span>
+                <span id="mine_fail" class="hide toast">Mining Failed :(</span>
             </div>
-            <div id="save">
-                <h2>Save</h2>
-                <input type="button" id="save_button" value="Save"></input>
+            <div class="container">
+                <a href="chain.json">Download...</a>
             </div>
         </div>
 
+        <!-- WALLET CONTROLS-->
+        <div id="wallet" class="col-sm-4">
+            <div class="card">
+                <h2>Wallet</h2>
+                <div class="row">
+                    <div class="col-sm">
+                        <div class="button-group">
+                            <!-- Controls -->
+                            <input type="button" id="create_button" value="Create"></input>
+                            <input type="button" id="sign_button" value="Sign"></input>
+                            <input type="button" id="send_button" value="Send"></input>
+                        </div>
+                    </div>
+                    <div class="input-group col-sm">
+                        <!-- Information -->
+                        <label for="wallet_id">Address</label>
+                        <input id="wallet_id"></input>
+                        <label for="wallet_secret">Secret</label>
+                        <input id="wallet_secret"></input>
+                        <label for="destination">Destination</label>
+                        <input type="text" id="destination"></input>
+                        <label for="amount">Amount</label>
+                        <input type="text" id="amount"></input>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="container">
+                <textarea id="transaction_data" rows="12" cols="40"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <!-- CURRENT BLOCKCHAIN-->
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Hash</th>
+                    <th>Date</th>
+                    <th>Data</th>
+                    <th>Previous</th>
+                    <th>Nonce</th>
+                </tr>
+            </thead>
+            <tbody id="chain_blocks" />
+        </table>
     </div>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>

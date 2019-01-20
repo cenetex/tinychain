@@ -7,8 +7,8 @@ let chain = null;
 module.exports = {
     create: (callback) => {
         chain = new Blockchain();
-        //callback(chain);
-        chain.load(callback);
+        callback(chain);
+        //chain.load(callback);
     },
     wallet: {
         create: () => {
