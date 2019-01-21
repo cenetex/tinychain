@@ -29,7 +29,11 @@ Developer Mode
 
 ## Architecture
 
-### Blockchain Node
+### Blockchain Schema
+
+
+
+### Blockchain Node Functions
 
 - Load chain
 - Listen for transactions

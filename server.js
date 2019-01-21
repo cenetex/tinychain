@@ -51,7 +51,12 @@ blockchain.create(chain => {
     });
     app.post('/transaction', (request, response) => {
         let data = request.body;
-        response.send(chain.addTransaction(data));
+        chain.addTransaction(forge.util.encode64(JSON.stringify({
+            source: data.source,
+            destination: data.destination,
+            signature: data.signature
+        })))
+        response.send(chain);
     });
     app.listen(PORT, () => {
         console.log(`listening on port ${PORT}`)
