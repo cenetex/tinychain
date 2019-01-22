@@ -4,17 +4,20 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine"
+    "start": "nodemon ./server.js",
+    "test": "nodemon ./node_modules/.bin/jasmine"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "express": "^4.16.4",
-    "jasmine": "^3.3.1"
+    "jasmine": "^3.3.1",
+    "jshint": "^2.9.7"
   },
   "dependencies": {
     "bluzelle": "^0.4.415",
     "crypto-js": "^3.1.9-1",
+    "jsonschema": "^1.2.4",
     "node-forge": "^0.7.6",
     "sqlite3": "^4.0.6"
   }

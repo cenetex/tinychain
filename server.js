@@ -1,6 +1,6 @@
-const express = require('express'),
-    bodyParser = require('body-parser'),
-    blockchain = require('.');
+const express = require('express');
+const bodyParser = require('body-parser');
+const blockchain = require('.');
 
 const app = express(),
     PORT = 3030;
@@ -55,10 +55,10 @@ blockchain.create(chain => {
             source: data.source,
             destination: data.destination,
             signature: data.signature
-        })))
+        })));
         response.send(chain);
     });
     app.listen(PORT, () => {
-        console.log(`listening on port ${PORT}`)
+        console.log(`listening on port ${PORT}`);
     });
 });

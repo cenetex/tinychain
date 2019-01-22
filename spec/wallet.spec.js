@@ -87,13 +87,14 @@ describe("HD Wallet", () => {
         expect(wallet.secret)
             .toBe(wallets[0].secret);
     });
-    for (let i = 0; i < 10; i += 1) {
-        let wallet = Wallet.HDWallet(PASSPHRASE, i);
-        it('can be generated from a passphrase for a specified index', () => {
+
+    it('can be generated from a passphrase for a specified index', () => {
+        for (let i = 0; i < 10; i += 1) {
+            let wallet = Wallet.HDWallet(PASSPHRASE, i);
             expect(wallet.address)
                 .toBe(wallets[i].address);
             expect(wallet.secret)
                 .toBe(wallets[i].secret);
-        });
-    }
+        }
+    });
 });

@@ -11,7 +11,7 @@ $(()=>{
                     <td data-label="Data">${short_hash(T.data)}</td>
                     <td data-label="Previous">${short_hash(T.previousHash)}</td>
                     <td data-label="Nonce">${T.nonce}</td>
-                    </tr>`
+                    </tr>`;
             });
             $('#chain_blocks').html( blocks_html);
         });
@@ -21,7 +21,7 @@ $(()=>{
         $.getJSON('wallet/new', data => {
             $("#wallet_id").val(data.address);
             $("#wallet_secret").val(data.secret);
-        })
+        });
     });
 
     $('#sign_button').on('click', () => {
@@ -49,7 +49,7 @@ $(()=>{
             type: 'PUT',
             data: { address: $("#wallet_id").val() },
             success: function(response) {
-                var s = $("#mine_ok");
+                let s = $("#mine_ok");
                 s.show();
                 s.fadeOut(3000);
 
@@ -58,7 +58,7 @@ $(()=>{
                 load_data();
             },
             error: function (error) {
-                var s = $("#mine_fail");
+                let s = $("#mine_fail");
                 s.show();
                 s.fadeOut(2000);
 

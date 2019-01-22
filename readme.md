@@ -32,7 +32,6 @@ Developer Mode
 ### Blockchain Schema
 
 
-
 ### Blockchain Node Functions
 
 - Load chain
@@ -48,7 +47,12 @@ Developer Mode
 
 ## Contribution Guidelines
 
-- Create a pull request!
+- The use of third party libraries is a form of technical debt and should be avoided.
+- All algorithms should be transparent and clearly explained.
+- Include tests for all functionality.
+- Create a pull request, and discuss with the community.
+- This is a new project with very few contributors and needs help in all areas.
+- Visit us on reddit: www.reddit.com/
 
 ## Copyright
 
